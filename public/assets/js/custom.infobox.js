@@ -1,20 +1,22 @@
 function drawInfobox(infoboxContent, json, i){
 
-    if( json.data[i].price )        { var price = '<div class="price average-color"><span>' + json.data[i].price + '</span></div>' }
+    if( json[i].precio )        { var price = '<div class="price average-color"><span>' + json[i].precio + '</span></div>' }
         else                        { price = '' }
-    if(json.data[i].id)             { var id = json.data[i].id }
+    if(json[i].id)             { var id = json[i].id }
         else                        { id = '' }
-    if(json.data[i].url)            { var url = json.data[i].url }
+    //if(json.url)            { var url = json[i].url }
+    if(json.tipo)            { var url = json[i].tipo }
         else                        { url = '' }
-    if(json.data[i].type)           { var type = json.data[i].type }
+    if(json[i].tipo)           { var type = json[i].type }
         else                        { type = '' }
-    if(json.data[i].title)          { var title = json.data[i].title }
+    if(json[i].calle)          { var title = json[i].calle }
         else                        { title = '' }
-    if(json.data[i].location)       { var location = json.data[i].location }
+    if(json[i].estado)       { var location = json[i].estado }
         else                        { location = '' }
-    if(json.data[i].gallery[0])     { var gallery = json.data[i].gallery[0] }
-        else                        { gallery[0] = '../img/default-item.jpg' }
-
+   // if(json[i].gallery)     { var gallery = json[i].gallery }
+    //    else                        { gallery[0] = '../img/default-item.jpg' }
+  if(json[i].estado)     { var gallery =json[i].estado }
+     else                        { gallery[0] = '../img/default-item.jpg' }
     var ibContent = '';
     ibContent =
     '<div class="infobox">' +

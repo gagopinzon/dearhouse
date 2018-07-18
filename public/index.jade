@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="assets/css/style.css" type="text/css">
 
     <title>Dear House</title>
-
+ 
 </head> 
 
 <body id="page-top" class="has-map">
@@ -554,12 +554,27 @@
 <![endif]-->
 
 <script>
+    var _latitude = 51.541216;
+    var _longitude = -0.095678;
+    var jsonPath = 'assets/json/items.json';
 
+    // Load JSON data and create Google Maps
+
+    $.getJSON(jsonPath)
+            .done(function(json) {
+                createHomepageGoogleMap(_latitude,_longitude,json);
+            })
+            .fail(function( jqxhr, textStatus, error ) {
+                console.log(error);
+            })
+    ;
 </script>
   <script type="text/javascript" src="js/signup.js"></script>
     <script type="text/javascript" src="js/login.js"></script>
     <script type="text/javascript" src="/js/propiedades.js"></script>
     <script>
+    var name = <%= name %>;
+    console.log(name);
     </script>
 </body>
 </html> 

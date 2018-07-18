@@ -439,7 +439,8 @@ function simpleMap(_latitude, _longitude, draggableMarker, scrollwheel, external
 
 // Homepage Google Map -------------------------------------------------------------------------------------------------
 
-function createHomepageGoogleMap(_latitude,_longitude,json){
+function createHomepageGoogleMap(_latitude,_longitude,cuantos,json){
+    console.log("Aver" + cuantos)
     $.get("assets/js/custom.infobox.js", function() {
         gMap();
     });
@@ -472,13 +473,13 @@ function createHomepageGoogleMap(_latitude,_longitude,json){
         var activeMarker = false;
         var lastClicked = false;
 
-        for (var i = 0; i < json.data.length; i++) {
-
+        for (var i = 0; i < json.length; i++) {
+console.log(json[i].lat);
             // Google map marker content
 
-            if( json.data[i].color ) var color = json.data[i].color;
-            else color = '';
-
+           if( json[i].color ) var color = json[i].color;
+           else color = '';
+            color = '';
             var markerContent = document.createElement('DIV');
             markerContent.innerHTML =
                 '<div class="map-marker">' +
@@ -490,7 +491,7 @@ function createHomepageGoogleMap(_latitude,_longitude,json){
             // Create marker on the map
 
             var marker = new RichMarker({
-                position: new google.maps.LatLng( json.data[i].latitude, json.data[i].longitude ),
+                position: new google.maps.LatLng( json[i].lat, json[i].lon),
                 map: map,
                 draggable: false,
                 content: markerContent,
@@ -619,7 +620,7 @@ function createHomepageGoogleMap(_latitude,_longitude,json){
 
         google.maps.event.addListener(map, 'idle', function() {
             var visibleArray = [];
-            for (var i = 0; i < json.data.length; i++) {
+            for (var i = 0; i < json.length; i++) {
                 if ( map.getBounds().contains(newMarkers[i].getPosition()) ){
                     visibleArray.push(newMarkers[i]);
                     $.each( visibleArray, function (i) {
@@ -644,7 +645,7 @@ function createHomepageGoogleMap(_latitude,_longitude,json){
 
         function is_cached(src, a) {
             var image = new Image();
-            var loadedImage = $('.results li #' + json.data[a].id + ' .image');
+            var loadedImage = $('.results li #' + json[a].id + ' .image');
             image.src = src;
             if( image.complete ){
                 $(".results").each(function() {
@@ -654,7 +655,7 @@ function createHomepageGoogleMap(_latitude,_longitude,json){
             }
             else {
                 $(".results").each(function() {
-                    $('.results li #' + json.data[a].id + ' .image').addClass('loading');
+                    $('.results li #' + json[a].id + ' .image').addClass('loading');
                 });
                 $(image).load(function(){
                     loadedImage.removeClass('loading');
@@ -813,7 +814,7 @@ function jQueryLoaded(){
     function loadMap() {
         var script = document.createElement('script');
         script.type = 'text/javascript';
-        script.src = 'https://maps.googleapis.com/maps/api/js?sensor=false&libraries=places&callback=initialize';
+        script.src = 'https://maps.googleapis.com/maps/api/js?sensor=true&libraries=places&callback=initialize';
         document.body.appendChild(script);
     }
 }
