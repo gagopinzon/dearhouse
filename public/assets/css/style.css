@@ -2134,6 +2134,7 @@ input[type="text"]:active, input[type="text"]:focus, input[type="date"]:active, 
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.15);
   background-color: #fff;
   display: table;
+  width: 441px;
 }
 .infobox article {
   margin-bottom: 20px;
@@ -2235,7 +2236,10 @@ input[type="text"]:active, input[type="text"]:focus, input[type="date"]:active, 
   opacity: 1;
   -webkit-animation: fadeInMarker .3s;
   animation: fadeInMarker .3s;
+
 }
+
+
 .fade-in-marker > img {
   z-index: 1;
 }

@@ -32,6 +32,9 @@ propiedad: {
 habitaciones: {
   type: DataTypes.STRING  
 },
+metros: {
+  type: DataTypes.STRING  
+},
 baños: {
   type: DataTypes.STRING  
 },
@@ -59,12 +62,19 @@ aire: {
 usuario: {
   type: DataTypes.STRING  
 },
+descripcion: {
+  type: DataTypes.STRING  
+},
 lat: {
   type: DataTypes.STRING  
 },
 lon: {
   type: DataTypes.STRING  
-} }
+},
+images: {
+  type: DataTypes.STRING  
+} 
+}
 );
 
 

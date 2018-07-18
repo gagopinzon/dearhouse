@@ -27,7 +27,7 @@ app.get("/api/obtener", function(req, res) {
         where: { 
           municipio:cuales 
         },
-        attributes:["id","calle","Num","interior","colonia","municipio","estado","tipo","propiedad","habitaciones","baños","plantas","precio","estacionamiento","amueblado","terraza","alberca","aire","usuario","lat", "lon"]
+        attributes:["id","calle","Num","interior","colonia","municipio","estado","tipo","propiedad","habitaciones","metros","baños","plantas","precio","estacionamiento","amueblado","terraza","alberca","aire","usuario","descripcion","lat", "lon","images"]
       }).then(corre => {
        
         if (!corre) {
