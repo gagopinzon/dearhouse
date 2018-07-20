@@ -2,7 +2,7 @@
 var db = require("../models");
 var passport = require("../config/passport");
 //
-
+var elides;
 
 
 module.exports = function(app) {
@@ -36,8 +36,7 @@ app.get("/api/obtener", function(req, res) {
           });
         };
       
-        return corre;
-     
+        return corre;    
 
     }
   ).catch(function(err) {
@@ -49,7 +48,9 @@ app.get("/api/obtener", function(req, res) {
 }
 
 propiedades("zapopan").then(function(result){
+  global.pines=result;
   res.send(JSON.stringify(result));
+
  }).catch(function(err) {
 
 console.log("no");
@@ -60,7 +61,44 @@ console.log("no");
  //fin 
 });
 
-	
+  
+
+
+ // Pasamos el id de la propiedad a inmueble.html
+ app.post("/api/pasaID", function(req, res) {
+ 
+  global.elides=req.body.cual;
+
+
+    // The user is not logged in, send back an empty object
+    res.send(JSON.stringify(global.elides));
+ 
+});
+
+
+
+ // Pasamos el id de la propiedad a inmueble.html
+ app.post("/api/cualID", function(req, res) {
+
+
+  rta =  global.pines.rows.filter(
+    (it) => {
+      return it.id === global.elides;
+    }
+ );    
+ console.log(rta);
+
+   res.send(rta);
+   
+
+
+
+
+ 
+});
+
+
+
 	
 
 

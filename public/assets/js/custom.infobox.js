@@ -1,5 +1,5 @@
 function drawInfobox(infoboxContent, json, i){
-
+   
     if( json[i].precio )        { var precio = '<div class="price average-color"><span>' + json[i].precio + '</span></div>' }
         else                        { precio = '' }
     if(json[i].id)             { var id = json[i].id }
@@ -44,7 +44,7 @@ function drawInfobox(infoboxContent, json, i){
     if(json[i].estacionamiento)     { var estacionamiento = json[i].estacionamiento }
         else                        { estacionamiento= '-' }
     var ibContent = '';
-    url = 'assets/pages/items/1_e.html';
+    url = 'inmueble.html';
     ibContent =
     '<div class="infobox">' +
         '<div class="left">' +

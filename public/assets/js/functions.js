@@ -440,7 +440,7 @@ function simpleMap(_latitude, _longitude, draggableMarker, scrollwheel, external
 // Homepage Google Map -------------------------------------------------------------------------------------------------
 
 function createHomepageGoogleMap(_latitude,_longitude,cuantos,json){
-    console.log("Aver" + cuantos)
+  
     $.get("assets/js/custom.infobox.js", function() {
         gMap();
     });
@@ -472,9 +472,10 @@ function createHomepageGoogleMap(_latitude,_longitude,cuantos,json){
         var markerClicked = 0;
         var activeMarker = false;
         var lastClicked = false;
+       
 
         for (var i = 0; i < json.length; i++) {
-console.log(json[i].lat);
+
             // Google map marker content
 
            if( json[i].color ) var color = json[i].color;
@@ -495,7 +496,8 @@ console.log(json[i].lat);
                 map: map,
                 draggable: false,
                 content: markerContent,
-                flat: true
+                flat: true,
+                id:json[i].id
             });
 
             newMarkers.push(marker);
@@ -528,8 +530,17 @@ console.log(json[i].lat);
 
             google.maps.event.addListener(marker, 'click', (function(marker, i) {
                 return function() {
+                    var cualid=this.id;
+                    $.post("/api/pasaID", {
+                        cual: cualid
+                       
+                      })
+                   
+                
                     google.maps.event.addListener(map, 'click', function(event) {
+                        
                         lastClicked = newMarkers[i];
+                       
                     });
                     activeMarker = newMarkers[i];
                     if( activeMarker != lastClicked ){
@@ -577,6 +588,7 @@ console.log(json[i].lat);
         google.maps.event.addListener(map, 'click', function(event) {
             if( activeMarker != false && lastClicked != false ){
                 if( markerClicked == 1 ){
+                  
                     activeMarker.infobox.open(map);
                     activeMarker.infobox.setOptions({ boxClass:'fade-in-marker'});
                     activeMarker.content.className = 'marker-active marker-loaded';
@@ -595,6 +607,7 @@ console.log(json[i].lat);
             if( activeMarker != false ){
                 google.maps.event.addListener(activeMarker, 'click', function(event) {
                     markerClicked = 1;
+                    
                     removeAnimation('.infobox');
                 });
             }
@@ -614,6 +627,7 @@ console.log(json[i].lat);
         var markerCluster = new MarkerClusterer(map, newMarkers, { styles: clusterStyles, maxZoom: 19 });
         markerCluster.onClick = function(clickedClusterIcon, sameLatitude, sameLongitude) {
             return multiChoice(sameLatitude, sameLongitude, json);
+           
         };
 
         // Dynamic loading markers and data from JSON
@@ -646,6 +660,7 @@ console.log(json[i].lat);
         function is_cached(src, a) {
             var image = new Image();
             var loadedImage = $('.results li #' + json[a].id + ' .image');
+          
             image.src = src;
             if( image.complete ){
                 $(".results").each(function() {
