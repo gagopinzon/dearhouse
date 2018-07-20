@@ -81,21 +81,21 @@ console.log("no");
  app.post("/api/cualID", function(req, res) {
 
 
-  rta =  global.pines.rows.filter(
-    (it) => {
-      return it.id === global.elides;
-    }
- );    
- console.log(rta);
 
-   res.send(rta);
+  var arrFound = global.pines.rows.filter(function(item) {
+    return item.id == global.elides;
+  });
+  
+  //console.log(arrFound);
+  res.json({direccion:arrFound});
+   
+  });
+
+
    
 
 
 
-
- 
-});
 
 
 
