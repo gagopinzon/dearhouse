@@ -59,6 +59,15 @@ alberca: {
 aire: {
   type: DataTypes.STRING  
 },
+servicio: {
+  type: DataTypes.STRING  
+},
+lavado: {
+  type: DataTypes.STRING  
+},
+mascotas: {
+  type: DataTypes.STRING  
+},
 usuario: {
   type: DataTypes.STRING  
 },

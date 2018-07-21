@@ -22,7 +22,9 @@
         <div class="col-md-8">
             <div class="inner">
                 <div class="items-switch">
-                        <h2>Welcome <span class="member-name"></span></h2>
+                    <!--calle -->
+                        <h1><span class="calle"> </span><span class="numero"></span></h1>
+                        <h2><i class="fa fa-map-marker"></i><span class="colonia"></span> <i class="fa fa-shopping-cart"></i><span class="tipo"></span></h2>
                     <a href="#" class=""><img src="assets/img/arrow-left.png"></a>
                     <a href="#" class=""><img src="assets/img/arrow-right.png"></a>
                 </div>
@@ -34,10 +36,10 @@
                     </div>
                 </article>
                 <article class="animate move_from_bottom_short">
-                    <h1>534 Roosevelt Street</h1>
-                    <h2><i class="fa fa-map-marker"></i>San Francisco</h2>
-                    <figure class="price average-color"><span>$25.000</span></figure>
-                    <p>Curabitur odio nibh, luctus non pulvinar a, ultricies ac diam. Donec neque massa,
+                  
+                
+                   
+                    <p class="descripcion">Curabitur odio nibh, luctus non pulvinar a, ultricies ac diam. Donec neque massa,
                         viverra interdum eros ut, imperdiet pellentesque mauris. Proin sit amet scelerisque risus.
                         Donec semper semper erat ut mollis. Curabitur suscipit, justo eu dignissim lacinia ante
                         sapien pharetra duin consectetur eros augue sed ex
@@ -84,33 +86,43 @@
                     </div>
                     <!--end .person-->
                     <div class="block animate move_from_bottom_short">
+                           
                         <dl>
-                            <dt>Bathrooms</dt>
-                            <dd>1</dd>
-                            <dt>Bedrooms</dt>
-                            <dd>2</dd>
+                                
+                            <dt>Cuartos</dt>
+                            <dd class="cuartos">1</dd>
+                            <dt>Baños</dt>
+                            <dd class="baños">2</dd>
                             <dt>Area</dt>
-                            <dd>165m<sup>2</sup></dd>
-                            <dt>Garages</dt>
-                            <dd>1</dd>
+                            <dd class="area">165m<sup>2</sup></dd>
+                            <dt>Estacionamiento</dt>
+                            <dd class="estacionamiento">1</dd>
+                            <dt>Precio</dt>
+                                <dd ><figure class="price average-color"><span class="precio">$25.000</span></figure></dd>
                         </dl>
                     </div>
                 </article>
                 <!--end Sidebar-->
                 <article class="animate move_from_bottom_short">
-                    <h3>Features</h3>
+                    <h3>Características</h3>
                     <ul class="bullets">
-                        <li>Air Conditioning</li>
-                        <li>Balcony</li>
-                        <li>Bedding</li>
-                        <li>Cable TV</li>
-                        <li>Dishwasher</li>
-                        <li>Family Room</li>
-                        <li>Fireplace</li>
-                        <li>Grill</li>
-                        <li>Outdoor Kitchen</li>
-                        <li>Sauna</li>
-                        <li>Landscaping</li>
+                        <li class="amueblado"></li>
+                        <li class="terraza"></li>
+                        <li class="alberca"></li>
+                        <li class="aire"></li>
+                        <li class="servicio"></li>
+                        <li class="lavado"></li>
+                        <li class="mascotas"></li>
+                
+                        <li class="lat" id="lat"></li>
+                        <li class="lon" id="lon"></li>
+
+
+
+
+
+
+
                     </ul>
                 </article>
                 <!--end Features-->
@@ -146,34 +158,13 @@
     <!--end .row-->
 </div>
 <!--end #item-detail-->
-
+<script type="text/javascript" src="js/elID.js"></script>
 <script>
-    var _latitude = 51.541599;
-    var _longitude = -0.112588;
-    var draggableMarker = false;
-    var scrollwheel = true;
-    var element = document.querySelector('body');
-
-    if( hasClass(element, 'external') ){
-        var head = document.getElementsByTagName('head')[0];
-        var script = document.createElement('script');
-        script.type = 'text/javascript';
-        script.src = "../../js/external.js";
-        head.appendChild(script);
-    }
-    else {
-     
-        simpleMap(_latitude, _longitude,draggableMarker, scrollwheel);
-        rating();
-        averageColor( $('.content-container') );
-    }
-
-    function hasClass(element, cls) {
-        return (' ' + element.className + ' ').indexOf(' ' + cls + ' ') > -1;
-    }
+   
+    
 
 </script>
-  <script type="text/javascript" src="js/elID.js"></script>
+
 
 </body>
 </html>
