@@ -22,7 +22,7 @@ app.use(session({ secret: "gago pinzon", resave: true, saveUninitialized: true }
 app.use(passport.initialize());
 app.use(passport.session());
 
-const mi = require("./config/propiedadesBusqueda");
+
 
 
 //

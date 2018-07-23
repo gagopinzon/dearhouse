@@ -3,11 +3,14 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="js/slick/slick.css"/>
 
+    <link rel="stylesheet" type="text/css" href="js/slick/slick-theme.css"/>
     <!--<link href="../../fonts/font-awesome.css" rel="stylesheet" type="text/css">-->
     <!--<link href='http://fonts.googleapis.com/css?family=Roboto:700,400,300' rel='stylesheet' type='text/css'>-->
     <!--<link href="../../bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">-->
     <!--<link href="../../css/style.css" rel="stylesheet" type="text/css">-->
+  
 
     <style>
         #map-simple { min-height: 240px; }
@@ -25,13 +28,16 @@
                     <!--calle -->
                         <h1><span class="calle"> </span><span class="numero"></span></h1>
                         <h2><i class="fa fa-map-marker"></i><span class="colonia"></span> <i class="fa fa-shopping-cart"></i><span class="tipo"></span></h2>
-                    <a href="#" class=""><img src="assets/img/arrow-left.png"></a>
-                    <a href="#" class=""><img src="assets/img/arrow-right.png"></a>
+                    <a href="#" id="prevImage"><img src="assets/img/arrow-left.png"></a>
+                    <a href="#" id="nextImage"><img src="assets/img/arrow-right.png"></a>
                 </div>
                 <article class="animate move_from_bottom_short">
                     <div class="gallery">
                         <div class="image">
-                            <img src="assets/img/items/1_b.jpg" alt="">
+                            
+                            <div class="rotaImages" id="rotationImages">
+                              
+                              </div>
                         </div>
                     </div>
                 </article>
@@ -52,30 +58,30 @@
                             <figure class="person-image">
                                 <img src="assets/img/person-01.jpg" alt="">
                             </figure>
-                            <header>Catherine Brown</header>
-                            <a href="tel:818-832-5258">818-832-5258</a>
-                            <a href="mailto:catherine.brown@example.com">catherine.brown@example.com</a>
+                            <header class="nombre">x</header>
+                            <p class="telefono">x</a>
+                            <p class="correo">x</a>
                             <hr>
-                            <a href="#person-detail" class="link" data-toggle="collapse" aria-expanded="false" aria-controls="person-detail">Show Details</a>
+                            <a href="#person-detail" class="link" data-toggle="collapse" aria-expanded="false" aria-controls="person-detail">Mostrar Detalles</a>
                         </div>
                         <div class="collapse" id="person-detail">
                             <div class="details">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vestibulum, sem ut sollicitudin consectetur, augue diam ornare massa
+                                <p class="descripcionUsuario">
+                                   x
                                 </p>
-                                <h3>Contact Me</h3>
+                                <h3>Contacto</h3>
                                 <form role="form" method="post" class="clearfix">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="person-name" name="person-name" placeholder="Name">
+                                        <input type="text" class="form-control" id="person-name" name="person-name" placeholder="Nombre">
                                     </div>
                                     <div class="form-group">
                                         <input type="email" class="form-control" id="person-email" name="person-email" placeholder="Email">
                                     </div>
                                     <div class="form-group">
-                                        <textarea class="form-control" rows="2" placeholder="Message"></textarea>
+                                        <textarea class="form-control" rows="2" placeholder="Mensaje"></textarea>
                                     </div>
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-link dark pull-right">Send Message</button>
+                                        <button type="submit" class="btn btn-link dark pull-right">Enviar Mensaje</button>
                                     </div>
                                 </form>
 
@@ -159,11 +165,27 @@
 </div>
 <!--end #item-detail-->
 <script type="text/javascript" src="js/elID.js"></script>
-<script>
-   
-    
+
+
+    <script type="text/javascript" src="js/slick/slick.min.js"></script>
+
+<script type="text/javascript">
+function slickIt() {
+ 
+    $('.rotaImages').slick({
+  dots: true,
+  infinite: true,
+  speed: 300,
+  slidesToShow: 1,
+  adaptiveHeight: true,
+  nextArrow: $('#nextImage'),
+  prevArrow: $('#prevImage')  
+});
+};
 
 </script>
+    
+
 
 
 </body>

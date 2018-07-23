@@ -31,7 +31,15 @@ function drawInfobox(infoboxContent, json, i){
         else                        { municipio = '-' }
     if(json[i].estado)       { var location = json[i].estado }
         else                        { location = '' }
-    if(json[i].images)     { var gallery = json[i].images }
+
+
+    var galeria=json[i].images;
+
+var res = galeria.split("||-");
+console.log(res[0]);
+
+
+    if(json[i].images)     { var gallery = res[0]}
         else                        { gallery = 'assets/img/default-item.png' }
     if(json[i].descripcion)     { var descripcion = json[i].descripcion }
         else                        { descripcion = 'Sin Descripción' }
@@ -51,7 +59,7 @@ function drawInfobox(infoboxContent, json, i){
             '<a href="'+ url +'" data-expand-width="col-9" data-transition-parent=".content-loader" data-external="true">' +
                 '<div class="image">' +
                 precio +
-                    '<img src="'+ gallery +'" alt="">' +
+                    '<img src=/images/'+gallery+' alt="">' +
                 '</div>' +
                 '<header class="average-color">' +
                     '<h1 class="animate move_from_top_short">'+ calle +'</h1>' +

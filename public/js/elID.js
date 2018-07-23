@@ -3,8 +3,31 @@ $(document).ready(function() {
     // and updates the HTML on the page
     $.post("/api/cualID").then(function(data) {
  
+        var galeria=data.direccion[0].images;
+
+    var res = galeria.split("||-");
+    console.log(res[0]);
+    var str="<div></div>";
     
-    
+    if(data.direccion[0].images)     { var gallery = res[0]}
+     else                        { gallery = 'assets/img/default-item.png' }
+
+
+
+     for (i = 0; i < res.length; i++) {
+   
+       if(i==0){
+           str="";
+       }
+console.log(res[i]);
+            str += "<div><img src=/images/" + res[i] + "></div>";
+}
+setTimeout('slickIt()',300);
+
+document.getElementById("rotationImages").innerHTML = str;
+
+
+    $(".imagen").text(data.direccion[0].calle);
      $(".calle").text(data.direccion[0].calle);
      $(".numero").text(" " + data.direccion[0].Num);
      $(".colonia").text(data.direccion[0].colonia);
@@ -14,6 +37,10 @@ $(document).ready(function() {
      $(".estacionamiento").text(data.direccion[0].estacionamiento);
      $(".lat").text(data.direccion[0].lat);
      $(".lon").text(data.direccion[0].lon);
+     $(".nombre").text(data.usuario.nombre + " " + data.usuario.apellido);
+     $(".telefono").text(data.usuario.telefono);
+     $(".correo").text(data.usuario.email);
+     $(".descripcionUsuario").text(data.usuario.descripcion);
      var amueblado=data.direccion[0].amueblado;
      if(amueblado==1){amueblado="Amueblado"}else{amueblado=""};
      $(".amueblado").text(amueblado);
@@ -93,4 +120,3 @@ $(document).ready(function() {
 
 
   });
-  

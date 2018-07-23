@@ -497,7 +497,8 @@ function createHomepageGoogleMap(_latitude,_longitude,cuantos,json){
                 draggable: false,
                 content: markerContent,
                 flat: true,
-                id:json[i].id
+                id:json[i].id,
+                usuario:json[i].usuario
             });
 
             newMarkers.push(marker);
@@ -531,8 +532,12 @@ function createHomepageGoogleMap(_latitude,_longitude,cuantos,json){
             google.maps.event.addListener(marker, 'click', (function(marker, i) {
                 return function() {
                     var cualid=this.id;
+                    var cualUsuario=this.usuario;
+                    console.log(cualUsuario);
                     $.post("/api/pasaID", {
-                        cual: cualid
+                        cual: cualid,
+                        eluser:cualUsuario
+                       
                        
                       })
                    

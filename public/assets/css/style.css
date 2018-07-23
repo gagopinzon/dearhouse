@@ -912,7 +912,7 @@ ul.bullets li:before {
   -moz-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.15);
   -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.15);
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.15);
-  bottom: -16px;
+  bottom: -3px;
   background-color: #626262;
   color: #fff;
   padding: 6px 12px;
@@ -2182,12 +2182,23 @@ input[type="text"]:active, input[type="text"]:focus, input[type="date"]:active, 
   padding: 20px;
 }
 .infobox .left .image {
-  position: relative;
   background-color: lightgray;
   min-height: 150px;
+  position: relative;
+
+  overflow: hidden;
 }
 .infobox .left .image img {
+  -o-object-fit: cover;
+  object-fit: cover;
+  position: absolute;
+  left: 50%;
+  top: 50%;
   width: 100%;
+  height: auto;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
 }
 .infobox .left .image .price {
   font-size: 14px;
@@ -2552,6 +2563,7 @@ input[type="text"]:active, input[type="text"]:focus, input[type="date"]:active, 
   -moz-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.15);
   -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.15);
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.15);
+  margin-top: 87px;
 }
 #item-detail .items-switch {
   left: 0;
