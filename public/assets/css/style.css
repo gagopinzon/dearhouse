@@ -1261,6 +1261,23 @@ ul.bullets li:before {
 .btn.btn-primary:hover {
   background-color: #008ce6;
 }
+#aplicarCambios{
+width: 100%;
+ visibility: hidden; 
+ display: none; 
+ margin-bottom: 10px;
+ 
+}
+form.busqueda {
+  margin-top: 13px;
+}
+.input-group .form-control-precio {
+  position: relative;
+  z-index: 2;
+  float: left;
+  width: 48%;
+  margin-bottom: 0;
+}
 .btn.btn-link {
   -moz-box-shadow: none;
   -webkit-box-shadow: none;

@@ -157,7 +157,7 @@
     <div class="page-content">
         <div class="search collapse in" id="search-collapse">
             <div class="container">
-                <form class="main-search" role="form" method="post" action="#">
+                <form  class="busqueda">
                     <div class="row">
                         <div class="col-md-2 col-sm-3">
                             <div class="form-group">
@@ -198,10 +198,10 @@
                                         <div class="input-group counter">
                                             <input type="text" class="form-control" id="bedrooms" name="bedrooms" placeholder="-">
                                             <span class="input-group-btn">
-                                                <button class="btn btn-default minus" type="button"><i class="fa fa-minus"></i></button>
+                                                <button class="btn btn-default minus botBusqueda" type="button"><i class="fa fa-minus"></i></button>
                                             </span>
                                             <span class="input-group-btn">
-                                                <button class="btn btn-default plus" type="button"><i class="fa fa-plus"></i></button>
+                                                <button class="btn btn-default plus botBusqueda" type="button"><i class="fa fa-plus"></i></button>
                                             </span>
                                         </div><!-- /input-group -->
                                     </div>
@@ -214,10 +214,10 @@
                                         <div class="input-group counter">
                                             <input type="text" class="form-control" id="bathrooms" name="bathrooms" placeholder="-">
                                             <span class="input-group-btn">
-                                                <button class="btn btn-default minus" type="button"><i class="fa fa-minus"></i></button>
+                                                <button class="btn btn-default minus botBusqueda" type="button"><i class="fa fa-minus"></i></button>
                                             </span>
                                             <span class="input-group-btn">
-                                                <button class="btn btn-default plus" type="button"><i class="fa fa-plus"></i></button>
+                                                <button class="btn btn-default plus botBusqueda" type="button"><i class="fa fa-plus"></i></button>
                                             </span>
                                         </div><!-- /input-group -->
                                     </div>
@@ -241,16 +241,17 @@
                         <div class="col-md-2 col-sm-2">
                             <div class="form-group">
                                 <label>Precio</label>
-                                <div class="ui-slider" id="price-slider" data-value-min="100" data-value-max="40000" data-value-type="price" data-currency="$" data-currency-placement="before">
-                                    <div class="values clearfix">
-                                        <input class="value-min" name="value-min[]" readonly>
-                                        <input class="value-max" name="value-max[]" readonly>
-                                    </div>
-                                    <div class="element"></div>
-                                </div>
+                                <div class="input-group counter">
+                                        <input type="number" class="form-control-precio" id="minPrecio" name="minPrecio" placeholder="min">
+                                        
+                                        <input type="number" class="form-control-precio" id="maxPrecio" name="maxPrecio" placeholder="max">
+                                    </div><!-- /input-group -->
                             </div>
                             <!-- /.form-group -->
                         </div>
+                        <div class="col-sm-12">
+                                <button type="submit" id="aplicarCambios" class="btn btn-primary">aplicar Cambios</button>
+                            </div>
                         <!--/.col-md-6-->
                     </div>
                     <!--/.row-->
@@ -557,6 +558,7 @@
 
 </script>
   <script type="text/javascript" src="js/signup.js"></script>
+  <script type="text/javascript" src="js/busqueda.js"></script>
     <script type="text/javascript" src="js/login.js"></script>
     <script type="text/javascript" src="/js/propiedades.js"></script>
     <script>
