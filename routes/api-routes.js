@@ -21,11 +21,60 @@ module.exports = function (app) {
   // mandamos la lista de las propiedades
   app.get("/api/obtener", function (req, res) {
 
-    function propiedades(cuales) {
+    function propiedades() {
 
       return db.Inmueble.findAndCountAll({
-        where: {
-          municipio: cuales
+       
+        attributes: ["id", "calle", "Num", "interior", "colonia", "municipio", "estado", "tipo", "propiedad", "habitaciones", "metros", "baños", "plantas", "precio", "estacionamiento", "amueblado", "terraza", "alberca", "aire", "servicio", "lavado", "mascotas", "usuario", "descripcion", "lat", "lon", "images"]
+      }).then(corre => {
+
+        if (!corre) {
+          return done(null, false, {
+            message: "ño"
+          });
+        };
+
+        return corre;
+
+      }
+      ).catch(function (err) {
+
+        console.log("no");
+
+      });
+
+    }
+
+    propiedades().then(function (result) {
+      global.pines = result;
+      res.send(JSON.stringify(result));
+
+    }).catch(function (err) {
+
+      console.log("no");
+
+    });;
+
+
+    //fin 
+  });
+
+
+
+
+
+
+
+  app.post("/api/filtroBusqueda", function (req, res) {
+    function propiedades() {
+console.log( "eltipo"  + JSON.parse(req.body.tipoCan) );
+console.log( req.body.bañosCan);
+      return db.Inmueble.findAndCountAll({
+          where: {
+            propiedad: {   $in: JSON.parse(req.body.tipoCan)  },
+            tipo: {   $in: JSON.parse(req.body.rentoventCan)  },
+          habitaciones: {   $lte: req.body.cuartoCan  },
+          baños: {   $lte: req.body.bañosCan  }
         },
         attributes: ["id", "calle", "Num", "interior", "colonia", "municipio", "estado", "tipo", "propiedad", "habitaciones", "metros", "baños", "plantas", "precio", "estacionamiento", "amueblado", "terraza", "alberca", "aire", "servicio", "lavado", "mascotas", "usuario", "descripcion", "lat", "lon", "images"]
       }).then(corre => {
@@ -47,7 +96,7 @@ module.exports = function (app) {
 
     }
 
-    propiedades("zapopan").then(function (result) {
+    propiedades().then(function (result) {
       global.pines = result;
       res.send(JSON.stringify(result));
 
@@ -56,10 +105,18 @@ module.exports = function (app) {
       console.log("no");
 
     });;
-
-
-    //fin 
   });
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -150,7 +207,7 @@ module.exports = function (app) {
   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
   // otherwise send back an error
   app.post("/api/signup", function (req, res) {
-    console.log(req.body);
+    
     db.User.create({
       email: req.body.email,
       password: req.body.password

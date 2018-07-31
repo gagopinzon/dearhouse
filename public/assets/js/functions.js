@@ -533,7 +533,7 @@ function createHomepageGoogleMap(_latitude,_longitude,cuantos,json){
                 return function() {
                     var cualid=this.id;
                     var cualUsuario=this.usuario;
-                    console.log(cualUsuario);
+                 
                     $.post("/api/pasaID", {
                         cual: cualid,
                         eluser:cualUsuario
@@ -683,6 +683,20 @@ function createHomepageGoogleMap(_latitude,_longitude,cuantos,json){
                 });
             }
         }
+
+        // filtros de búsqueda -----------------------------------------------------------------------------------------
+
+        $('#aplicarCambios').on("click", function() {
+          
+            for (var i = 0; i < newMarkers.length; i++) {
+              
+                newMarkers[i].setMap(null);
+              
+            }
+            newMarkers.length = 0;
+          
+        });
+     
 
         // Geolocation of user -----------------------------------------------------------------------------------------
 
