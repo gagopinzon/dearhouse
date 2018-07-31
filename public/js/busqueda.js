@@ -43,19 +43,21 @@ var cuarto=$("#cuartos");
 var baños = $("#baños");
 
 var preciomin=$("#minPrecio");
-var preciominCan=preciomin.val();
+
 var preciomax=$("#maxPrecio");
-var preciomaxCan=preciomax.val();
+
 
 
     var busquedaData = {
      tipoCan: tipo.val(),
      rentoventCan: rentovent.val(),
     cuartoCan: cuarto.val(),
-  bañosCan:baños.val()
+  bañosCan:baños.val(),
+  preciominCan:preciomin.val(),
+  preciomaxCan:preciomax.val()
     };
 
-    filtroBusqueda(busquedaData.tipoCan, busquedaData.rentoventCan,busquedaData.cuartoCan,busquedaData.bañosCan);
+    filtroBusqueda(busquedaData.tipoCan, busquedaData.rentoventCan,busquedaData.cuartoCan,busquedaData.bañosCan,busquedaData.preciominCan,busquedaData.preciomaxCan);
 
     
 
@@ -65,13 +67,15 @@ var preciomaxCan=preciomax.val();
 
 
 
-function filtroBusqueda(tipoCan,rentoventCan,cuartoCan,bañosCan) {
+function filtroBusqueda(tipoCan,rentoventCan,cuartoCan,bañosCan,preciominCan,preciomaxCan) {
 console.log("siii" +rentoventCan);
   $.post("/api/filtroBusqueda", {
     tipoCan: JSON.stringify(tipoCan),
     rentoventCan: JSON.stringify(rentoventCan),
   cuartoCan: cuartoCan,
-  bañosCan: bañosCan
+  bañosCan: bañosCan,
+  preciominCan:preciominCan,
+  preciomaxCan:preciomaxCan
   }).then(function(data) {
 console.log("alo");
 data2=JSON.parse(data);

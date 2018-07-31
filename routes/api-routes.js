@@ -67,14 +67,42 @@ module.exports = function (app) {
 
   app.post("/api/filtroBusqueda", function (req, res) {
     function propiedades() {
-console.log( "eltipo"  + JSON.parse(req.body.tipoCan) );
-console.log( req.body.bañosCan);
+var propiedad=JSON.parse(req.body.tipoCan);
+if(!propiedad){
+  propiedad=[0,1,2,3,4,5,6,7,8,9]
+};
+var tipo= JSON.parse(req.body.rentoventCan);
+if(!tipo){
+  tipo=[0,1,2,3,4,5,6,7,8,9]
+};
+var habitaciones= req.body.cuartoCan;
+if(!habitaciones){
+  habitaciones=9999
+};
+
+var baños= req.body.baños;
+if(!baños){
+  baños=9999
+};
+
+var precioMin= req.body.preciominCan;
+if(!precioMin){
+  precioMin=1
+};
+
+var precioMax= req.body.preciomaxCan;
+if(!precioMax){
+  precioMax=999999999
+};
+
       return db.Inmueble.findAndCountAll({
           where: {
-            propiedad: {   $in: JSON.parse(req.body.tipoCan)  },
-            tipo: {   $in: JSON.parse(req.body.rentoventCan)  },
-          habitaciones: {   $lte: req.body.cuartoCan  },
-          baños: {   $lte: req.body.bañosCan  }
+            propiedad: {   $in:propiedad  },
+            tipo: {   $in:tipo  },
+          habitaciones: {   $lte: habitaciones  },
+          baños: {   $lte: baños  },
+          precio: {   $between: [precioMin, precioMax ]}
+       
         },
         attributes: ["id", "calle", "Num", "interior", "colonia", "municipio", "estado", "tipo", "propiedad", "habitaciones", "metros", "baños", "plantas", "precio", "estacionamiento", "amueblado", "terraza", "alberca", "aire", "servicio", "lavado", "mascotas", "usuario", "descripcion", "lat", "lon", "images"]
       }).then(corre => {
