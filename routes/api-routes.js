@@ -178,7 +178,7 @@ if(!precioMax){
       }).then(corre => {
         if (!corre) {
           return done(null, false, {
-            message: "ño"
+
           });
         };
 
@@ -214,7 +214,7 @@ if(!precioMax){
     var arrFound = global.pines.rows.filter(function (item) {
       return item.id == global.elides;
     });
-    console.log( global.eluser.apellido);
+
     res.json({ direccion: arrFound, usuario:global.eluser });
 
   });
@@ -236,6 +236,11 @@ if(!precioMax){
   // otherwise send back an error
   app.post("/api/signup", function (req, res) {
     
+    db.Usuario.create({
+      email: req.body.email,
+     
+    });
+
     db.User.create({
       email: req.body.email,
       password: req.body.password
@@ -277,9 +282,75 @@ if(!precioMax){
 
 
 
+  // obtenemos los datos para los Datos de Usuario
+  app.post("/api/datosUsuario", function (req, res) {
+
+    if (!req.user) {
+      res.json({});
+    }
+
+    else {
+
+      function obtenerDatosUsuario(cual) {
+      return db.Usuario.findOne({
+        where: {
+          email: cual
+        }
+      }).then(DataUser => {
+        if (!DataUser) {
+          return done(null, false, {
+            message: "ño"
+          });
+        };
+
+        return DataUser;
+
+
+      }
+      ).catch(function (err) {
+
+        console.log(err);
+
+      });
+
+    }
+    obtenerDatosUsuario(req.user.email).then(function (resultUsuario) {
+      console.log(resultUsuario);
+     res.json(JSON.stringify(resultUsuario));
+    
+    }).catch(function (err) {
+
+
+    });
+
+
+    }
+  });
 
 
 
+  app.post("/api/actualizarUsuario", function (req, res) {
+    
+
+
+    db.Usuario.update({
+      nombre: req.body.nombre,
+      apellido: req.body.apellido,
+      telefono: req.body.telefono,
+      website: req.body.website,
+      ubicacion: req.body.ubicacion,
+      descripcion:req.body.descripcion
+      
+    },{where:{  email: req.body.email}    }
+    ).then(function () {
+      res.redirect(307, "http://www.google.com");
+    }).catch(function (err) {
+      console.log(err);
+      console.log("no");
+      res.json("/repetido");
+      // res.status(422).json(err.errors[0].message);
+    });
+  });
 
 
 

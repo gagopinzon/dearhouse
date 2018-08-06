@@ -591,6 +591,7 @@ function createHomepageGoogleMap(_latitude,_longitude,cuantos,json){
         // Close infobox after click on map
 
         google.maps.event.addListener(map, 'click', function(event) {
+           
             if( activeMarker != false && lastClicked != false ){
                 if( markerClicked == 1 ){
                   
@@ -638,7 +639,11 @@ function createHomepageGoogleMap(_latitude,_longitude,cuantos,json){
         // Dynamic loading markers and data from JSON
 
         google.maps.event.addListener(map, 'idle', function() {
-            var visibleArray = [];
+            console.log("jajajajajaja");
+            var c = map.getCenter();
+           // jQuery.cookies.set("YD44635center", c.lat() + ','  + c.lng() + ',' + map.getZoom(),  cookieOptions);
+     
+           var visibleArray = [];
             for (var i = 0; i < json.length; i++) {
                 if ( map.getBounds().contains(newMarkers[i].getPosition()) ){
                     visibleArray.push(newMarkers[i]);

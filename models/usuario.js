@@ -6,7 +6,7 @@ module.exports = function(sequelize, DataTypes) {
   var Usuario = sequelize.define('Usuario', {   
 nombre: {
   type: DataTypes.STRING,
-  allowNull: false
+
 },
 apellido: {
   type: DataTypes.STRING  
@@ -21,6 +21,9 @@ imagen: {
   type: DataTypes.STRING  
 },
 website: {
+  type: DataTypes.STRING  
+},
+ubicacion: {
   type: DataTypes.STRING  
 },
 descripcion: {
