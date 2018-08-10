@@ -449,33 +449,6 @@ function createHomepageGoogleMap(_latitude,_longitude,cuantos,json){
             $('.map-wrapper #map').height( $(window).height() - $('header:first').height() - 1 - $('.page-content .search').height() );
         }
         var mapCenter = new google.maps.LatLng(_latitude,_longitude);
-
-        geocoder = new google.maps.Geocoder();
-
-        function codeAddress(address) 
-        {
-          geocoder.geocode( {address:address}, function(results, status) 
-          {
-            if (status == google.maps.GeocoderStatus.OK) 
-            {
-              map.setCenter(results[0].geometry.location);//center the map over the result
-              //place a marker at the location
-              var marker = new google.maps.Marker(
-              {
-                  map: map,
-                  position: results[0].geometry.location,
-                  zoom: 18
-              });
-            } else {
-              alert('Geocode was not successful for the following reason: ' + status);
-           }
-          });
-        }
-        var input = document.getElementById('location') ;
-        if(input.value){
-        codeAddress(input.value);
-    };
-
         var mapOptions = {
             zoom: 15,
             center: mapCenter,
@@ -618,7 +591,6 @@ function createHomepageGoogleMap(_latitude,_longitude,cuantos,json){
         // Close infobox after click on map
 
         google.maps.event.addListener(map, 'click', function(event) {
-           
             if( activeMarker != false && lastClicked != false ){
                 if( markerClicked == 1 ){
                   
@@ -666,11 +638,7 @@ function createHomepageGoogleMap(_latitude,_longitude,cuantos,json){
         // Dynamic loading markers and data from JSON
 
         google.maps.event.addListener(map, 'idle', function() {
-            console.log("jajajajajaja");
-            var c = map.getCenter();
-           // jQuery.cookies.set("YD44635center", c.lat() + ','  + c.lng() + ',' + map.getZoom(),  cookieOptions);
-     
-           var visibleArray = [];
+            var visibleArray = [];
             for (var i = 0; i < json.length; i++) {
                 if ( map.getBounds().contains(newMarkers[i].getPosition()) ){
                     visibleArray.push(newMarkers[i]);
@@ -764,12 +732,32 @@ function createHomepageGoogleMap(_latitude,_longitude,cuantos,json){
         // Autocomplete address ----------------------------------------------------------------------------------------
 
         var input = document.getElementById('location') ;
-        
         var autocomplete = new google.maps.places.Autocomplete(input, {
             types: ["geocode"]
         });
         autocomplete.bindTo('bounds', map);
-       
+        google.maps.event.addListener(autocomplete, 'place_changed', function() {
+            var place = autocomplete.getPlace();
+            if (!place.geometry) {
+                return;
+            }
+            if (place.geometry.viewport) {
+                map.fitBounds(place.geometry.viewport);
+                map.setZoom(14);
+            } else {
+                map.setCenter(place.geometry.location);
+                map.setZoom(14);
+            }
+
+            var address = '';
+            if (place.address_components) {
+                address = [
+                    (place.address_components[0] && place.address_components[0].short_name || ''),
+                    (place.address_components[1] && place.address_components[1].short_name || ''),
+                    (place.address_components[2] && place.address_components[2].short_name || '')
+                ].join(' ');
+            }
+        });
     }
 }
 

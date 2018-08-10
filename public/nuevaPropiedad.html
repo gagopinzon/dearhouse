@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+<div id="submit-page">
+    <div class="inner">
+        <h1 id="temp">Registrar Nueva Propiedad</h1>
+        <form role="form" method="post">
+            <article class="animate move_from_bottom_short">
+                <div class="row">
+                        <h3>Domicilio</h3>
+                    <div class="col-md-7">
+                        <div class="form-group form-group-lg">
+                            <input type="text" class="form-control" id="calle" name="calle" placeholder="Calle">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-lg">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="num" name="num" placeholder="Número">
+                             
+                            </div><!-- /input-group -->
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group form-group-lg">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="int" name="int" placeholder="Interior">
+                           
+                            </div><!-- /input-group -->
+                        </div>
+                    </div>
+                   
+                    <div class="col-md-4">
+                        <div class="form-group form-group-lg">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="colonia" name="colonia" placeholder="Colonia">
+                           
+                            </div><!-- /input-group -->
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group form-group-lg">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="municipio" name="municipio" placeholder="Municipio">
+                            
+                            </div><!-- /input-group -->
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group form-group-lg">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="estado" name="estado" placeholder="Estado">
+                              
+                            </div><!-- /input-group -->
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                            <div id="map-simple"></div>
+                        </div>
+                </div>
+                </article>
+                <article>
+                        <div class="row">
+                        <h3>Gallery</h3>
+                        </div>
+                    </article>
+
+                <article class="animate move_from_bottom_short">
+                <div class="row">
+                    <h3>Características</h3>
+                    <div class="col-md-4">
+                    <div class="form-group">
+                        <select name="tipo" multiple title="tipo" id="tipo">
+                            <option value="1">Venta</option>
+                            <option value="2">Renta</option>
+                           
+                        </select>
+                    </div>
+</div>
+<div class="col-md-4">
+                    <div class="form-group">
+                        <select name="propiedad" id="Propiedad">
+                            <option value="1">Casa</option>
+                            <option value="2">Departamento</option>
+                            <option value="3">Terreno</option>
+                            <option value="4">Oficina</option>
+                            <option value="5">Estudio</option>
+                        </select>
+                    </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group form-group-lg">
+                            <div class="input-group">
+                                <input type="number" class="form-control" id="habitaciones" name="habitaciones" placeholder="Habitaciones">
+                              
+                            </div><!-- /input-group -->
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group form-group-lg">
+                            <div class="input-group">
+                                <input type="number" class="form-control" id="baños" name="baños" placeholder="Baños">
+                              
+                            </div><!-- /input-group -->
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group form-group-lg">
+                            <div class="input-group">
+                                <input type="number" class="form-control" id="plantas" name="plantas" placeholder="¿Cuantos pisos Tiene?">
+                              
+                            </div><!-- /input-group -->
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group form-group-lg">
+                            <div class="input-group">
+                                    <span class="input-group-addon">$</span>
+                                <input type="text" class="form-control" id="precio" name="precio" placeholder="Precio">
+                               
+                            </div><!-- /input-group -->
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                            <div class="form-group form-group-lg">
+                                <div class="input-group">
+                              
+                                    <input type="text" class="form-control" id="estacionamiento" name="estacionamiento" placeholder="# de Estacionamiento">
+                                   
+                                </div><!-- /input-group -->
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                                <div class="form-group form-group-lg">
+                                    <div class="input-group">
+                                  
+                                        <input type="text" class="form-control" id="metros" name="metros" placeholder="# de metros cuadrados">
+                                       
+                                    </div><!-- /input-group -->
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="animate move_from_bottom_short">
+                    <div class="row">
+                            <h3>Amenidades</h3>
+                        <div class="col-md-12">
+                                <article>
+                                        
+                                        <ul class="list-unstyled checkboxes">
+                                            <li><div class="checkbox"><label><input type="checkbox" name="features[]" value="1">¿Es amueblado?</label></div></li>
+                                            <li><div class="checkbox"><label><input type="checkbox" name="features[]" value="2">¿Tiene Terraza?</label></div></li>
+                                            <li><div class="checkbox"><label><input type="checkbox" name="features[]" value="3">¿Tiene Alberca?</label></div></li>
+                                            <li><div class="checkbox"><label><input type="checkbox" name="features[]" value="4">¿Tiene Aire Acondicionado?</label></div></li>
+                                            <li><div class="checkbox"><label><input type="checkbox" name="features[]" value="5">¿Tiene Cuarto de Servicio?</label></div></li>
+                                            <li><div class="checkbox"><label><input type="checkbox" name="features[]" value="6">¿Tiene Cuarto de Lavado?</label></div></li>
+                                            <li><div class="checkbox"><label><input type="checkbox" name="features[]" value="7">¿Se aceptan Mascotas?</label></div></li>
+
+                                        </ul>
+                                    </article>
+
+                        </div>
+
+                </div>
+         
+        </article>
+        <article class="animate move_from_bottom_short">
+        <div class="row">
+                <!--end .row-->
+                <div class="form-group">
+                    <textarea class="form-control" rows="4" id="description" placeholder="Description"></textarea>
+                </div>
+                <!--end textarea-->
+            </article>
+            <!--end Description-->
+    
+            <!--end Address-->
+            
+            <!--end Overview-->
+            
+            <!--end Gallery-->
+            
+            <!--end Features-->
+            <article class="center">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-circle btn-primary btn-xl"><i class="fa fa-check"></i></button>
+                </div>
+                <!--end .form-group-->
+            </article>
+            <!--end Submit Button-->
+            <article class="center">
+                <small>By clicking “submit” button you agree with <a href="" class="link">Terms and Conditions</a></small>
+            </article>
+            <!--end terms-->
+        </form>
+    </div>
+    <!--end .row-->
+</div>
+<!--end #item-detail-->
+
+<script>
+    $(document).ready(function() {
+        var _latitude = 51.541599;
+        var _longitude = -0.112588;
+        var draggableMarker = true;
+        var scrollwheel = true;
+
+        rating();
+
+        averageColor( $('#item-detail') );
+
+        //bootstrapSelect();
+
+        $('input').iCheck();
+
+        $('.submit-button').addClass('submit-page-open');
+
+        setTimeout(function() {
+            simpleMap(_latitude, _longitude,draggableMarker,scrollwheel);
+        }, 1000);
+    });
+</script>
+
+</body>
+</html>
