@@ -415,26 +415,38 @@ function simpleMap(_latitude, _longitude, draggableMarker, scrollwheel, external
 
         // Google map marker content
 
-        var markerContent = document.createElement('DIV');
-        markerContent.innerHTML =
-            '<div class="map-marker">' +
-                '<div class="icon"><img src="' + markerIcon + '"></div>' +
-                '</div>';
 
-        // Create marker on the map
-
-        var marker = new RichMarker({
-            position: mapCenter,
-            map: map,
-            draggable: draggableMarker,
-            content: markerContent,
-            flat: true,
-            icon: 'assets/img/marker.png'
-        });
-
-        marker.content.className = 'marker-loaded';
+        
     }
 
+    
+
+           // Geolocation of user -----------------------------------------------------------------------------------------
+           var geocoder = new google.maps.Geocoder();
+
+ 
+           geocodeAddress(geocoder, map);
+        
+   
+       function geocodeAddress(geocoder, resultsMap) {
+         //var address = document.getElementById('location').value;
+         var address = "india";
+         geocoder.geocode({'address': address}, function(results, status) {
+           if (status === 'OK') {
+             resultsMap.setCenter(results[0].geometry.location);
+             var marker = new google.maps.Marker({
+               map: resultsMap,
+               position: results[0].geometry.location
+             });
+           } else {
+             alert('Geocode was not successful for the following reason: ' + status);
+           }
+         });
+   
+   
+       };
+
+//FIN ----------
 }
 
 // Homepage Google Map -------------------------------------------------------------------------------------------------
@@ -466,6 +478,17 @@ function createHomepageGoogleMap(_latitude,_longitude,cuantos,json){
                 position: google.maps.ControlPosition.RIGHT_TOP
             }
         };
+
+
+
+
+
+
+
+
+
+
+        
         var mapElement = document.getElementById('map');
         var map = new google.maps.Map(mapElement, mapOptions);
         var newMarkers = [];
@@ -694,40 +717,46 @@ function createHomepageGoogleMap(_latitude,_longitude,cuantos,json){
               
             }
             newMarkers.length = 0;
+
+
+
+
+
+
+          
+
+
+
+
+
           
         });
      
 
         // Geolocation of user -----------------------------------------------------------------------------------------
+        var geocoder = new google.maps.Geocoder();
 
-        $('.geolocation').on("click", function() {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(success);
-            } else {
-                console.log('Geo Location is not supported');
-            }
-        });
+ 
+        geocodeAddress(geocoder, map);
+     
 
-        function success(position) {
-            var locationCenter = new google.maps.LatLng( position.coords.latitude, position.coords.longitude);
-            map.setCenter( locationCenter );
-            map.setZoom(14);
-
-            var geocoder = new google.maps.Geocoder();
-            geocoder.geocode({
-                "latLng": locationCenter
-            }, function (results, status) {
-                if (status == google.maps.GeocoderStatus.OK) {
-                    var lat = results[0].geometry.location.lat(),
-                        lng = results[0].geometry.location.lng(),
-                        placeName = results[0].address_components[0].long_name,
-                        latlng = new google.maps.LatLng(lat, lng);
-
-                    $("#location").val(results[0].formatted_address);
-                }
-            });
-
+    function geocodeAddress(geocoder, resultsMap) {
+      var address = document.getElementById('location').value;
+      geocoder.geocode({'address': address}, function(results, status) {
+        if (status === 'OK') {
+          resultsMap.setCenter(results[0].geometry.location);
+          var marker = new google.maps.Marker({
+            map: resultsMap,
+            position: results[0].geometry.location
+          });
+        } else {
+          alert('Geocode was not successful for the following reason: ' + status);
         }
+      });
+
+
+    };
+    
 
         // Autocomplete address ----------------------------------------------------------------------------------------
 
@@ -736,28 +765,9 @@ function createHomepageGoogleMap(_latitude,_longitude,cuantos,json){
             types: ["geocode"]
         });
         autocomplete.bindTo('bounds', map);
-        google.maps.event.addListener(autocomplete, 'place_changed', function() {
-            var place = autocomplete.getPlace();
-            if (!place.geometry) {
-                return;
-            }
-            if (place.geometry.viewport) {
-                map.fitBounds(place.geometry.viewport);
-                map.setZoom(14);
-            } else {
-                map.setCenter(place.geometry.location);
-                map.setZoom(14);
-            }
 
-            var address = '';
-            if (place.address_components) {
-                address = [
-                    (place.address_components[0] && place.address_components[0].short_name || ''),
-                    (place.address_components[1] && place.address_components[1].short_name || ''),
-                    (place.address_components[2] && place.address_components[2].short_name || '')
-                ].join(' ');
-            }
-        });
+
+
     }
 }
 
@@ -855,4 +865,7 @@ function jQueryLoaded(){
 
 function initialize(){
     simpleMap(_latitude, _longitude, draggableMarker, scrollwheel, true);
+
+
+    
 }

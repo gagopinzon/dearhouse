@@ -219,9 +219,17 @@
 
         $('.submit-button').addClass('submit-page-open');
 
-        setTimeout(function() {
+     
             simpleMap(_latitude, _longitude,draggableMarker,scrollwheel);
-        }, 1000);
+    
+
+var input2 = document.getElementById('calle') ;
+        var autocomplete = new google.maps.places.Autocomplete(input2, {
+            types: ["geocode"]
+        });
+        autocomplete.bindTo('bounds', map);
+
+
     });
 </script>
 
