@@ -2,6 +2,7 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var session = require("express-session");
+var multer  =   require('multer');
 const _ = require ("lodash");
 // Requiring passport as we've configured it
      

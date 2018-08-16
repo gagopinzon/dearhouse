@@ -8,19 +8,19 @@
 <div id="submit-page">
     <div class="inner">
         <h1 id="temp">Registrar Nueva Propiedad</h1>
-        <form role="form" method="post">
+        <form role="form" action="api/subirfoto" class="uploadImage" enctype="multipart/form-data" method="post">
             <article class="animate move_from_bottom_short">
                 <div class="row">
                         <h3>Domicilio</h3>
                     <div class="col-md-7">
                         <div class="form-group form-group-lg">
-                            <input required type="text" class="form-control" id="calle" name="calle" placeholder="Calle*">
+                            <input  type="text" class="form-control" id="calle" name="calle" placeholder="Calle*">
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group form-group-lg">
                             <div class="input-group">
-                                <input required type="text" class="form-control" id="num" name="num" placeholder="Número*">
+                                <input  type="text" class="form-control" id="num" name="num" placeholder="Número*">
                              
                             </div><!-- /input-group -->
                         </div>
@@ -37,7 +37,7 @@
                     <div class="col-md-4">
                         <div class="form-group form-group-lg">
                             <div class="input-group">
-                                <input required type="text" class="form-control" id="colonia" name="colonia" placeholder="Colonia*">
+                                <input  type="text" class="form-control" id="colonia" name="colonia" placeholder="Colonia*">
                            
                             </div><!-- /input-group -->
                         </div>
@@ -45,7 +45,7 @@
                     <div class="col-md-4">
                         <div class="form-group form-group-lg">
                             <div class="input-group">
-                                <input required type="text" class="form-control" id="municipio" name="municipio" placeholder="Municipio*">
+                                <input  type="text" class="form-control" id="municipio" name="municipio" placeholder="Municipio*">
                             
                             </div><!-- /input-group -->
                         </div>
@@ -53,7 +53,7 @@
                     <div class="col-md-4">
                         <div class="form-group form-group-lg">
                             <div class="input-group">
-                                <input required type="text" class="form-control" id="estado" name="estado" placeholder="Estado*">
+                                <input  type="text" class="form-control" id="estado" name="estado" placeholder="Estado*">
                               
                             </div><!-- /input-group -->
                         </div>
@@ -72,6 +72,15 @@
                         </div>
                     </article>
 
+                
+                    Seleccione una foto:
+                  
+                    Seleccione una foto:
+                    <input type="file" id="foto" name="foto" multiple />
+                    <br>
+                    <button id="subirfoto">subir</button>
+
+                    
                 <article class="animate move_from_bottom_short">
                 <div class="row">
                     <h3>Características</h3>
@@ -205,36 +214,7 @@
 </div>
 <!--end #item-detail-->
 
-<script>
-    $(document).ready(function() {
-        var _latitude = 51.541599;
-        var _longitude = -0.112588;
-        var draggableMarker = true;
-        var scrollwheel = true;
 
-        rating();
-
-        averageColor( $('#item-detail') );
-
-        //bootstrapSelect();
-
-        $('input').iCheck();
-
-        $('.submit-button').addClass('submit-page-open');
-
-     
-            simpleMap(_latitude, _longitude,draggableMarker,scrollwheel);
-    
-
-var input2 = document.getElementById('calle') ;
-        var autocomplete = new google.maps.places.Autocomplete(input2, {
-            types: ["geocode"]
-        });
-        autocomplete.bindTo('bounds', map);
-
-
-    });
-</script>
-
+<script type="text/javascript" src="js/nuevaPropiedad.js"></script>
 </body>
 </html>

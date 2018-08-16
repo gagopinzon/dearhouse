@@ -24,7 +24,7 @@ module.exports = function (app) {
     function propiedades() {
 
       return db.Inmueble.findAndCountAll({
-       
+
         attributes: ["id", "calle", "Num", "interior", "colonia", "municipio", "estado", "tipo", "propiedad", "habitaciones", "metros", "baños", "plantas", "precio", "estacionamiento", "amueblado", "terraza", "alberca", "aire", "servicio", "lavado", "mascotas", "usuario", "descripcion", "lat", "lon", "images"]
       }).then(corre => {
 
@@ -67,42 +67,42 @@ module.exports = function (app) {
 
   app.post("/api/filtroBusqueda", function (req, res) {
     function propiedades() {
-var propiedad=JSON.parse(req.body.tipoCan);
-if(!propiedad){
-  propiedad=[0,1,2,3,4,5,6,7,8,9]
-};
-var tipo= JSON.parse(req.body.rentoventCan);
-if(!tipo){
-  tipo=[0,1,2,3,4,5,6,7,8,9]
-};
-var habitaciones= req.body.cuartoCan;
-if(!habitaciones){
-  habitaciones=9999
-};
+      var propiedad = JSON.parse(req.body.tipoCan);
+      if (!propiedad) {
+        propiedad = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+      };
+      var tipo = JSON.parse(req.body.rentoventCan);
+      if (!tipo) {
+        tipo = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+      };
+      var habitaciones = req.body.cuartoCan;
+      if (!habitaciones) {
+        habitaciones = 9999
+      };
 
-var baños= req.body.baños;
-if(!baños){
-  baños=9999
-};
+      var baños = req.body.baños;
+      if (!baños) {
+        baños = 9999
+      };
 
-var precioMin= req.body.preciominCan;
-if(!precioMin){
-  precioMin=1
-};
+      var precioMin = req.body.preciominCan;
+      if (!precioMin) {
+        precioMin = 1
+      };
 
-var precioMax= req.body.preciomaxCan;
-if(!precioMax){
-  precioMax=999999999
-};
+      var precioMax = req.body.preciomaxCan;
+      if (!precioMax) {
+        precioMax = 999999999
+      };
 
       return db.Inmueble.findAndCountAll({
-          where: {
-            propiedad: {   $in:propiedad  },
-            tipo: {   $in:tipo  },
-          habitaciones: {   $lte: habitaciones  },
-          baños: {   $lte: baños  },
-          precio: {   $between: [precioMin, precioMax ]}
-       
+        where: {
+          propiedad: { $in: propiedad },
+          tipo: { $in: tipo },
+          habitaciones: { $lte: habitaciones },
+          baños: { $lte: baños },
+          precio: { $between: [precioMin, precioMax] }
+
         },
         attributes: ["id", "calle", "Num", "interior", "colonia", "municipio", "estado", "tipo", "propiedad", "habitaciones", "metros", "baños", "plantas", "precio", "estacionamiento", "amueblado", "terraza", "alberca", "aire", "servicio", "lavado", "mascotas", "usuario", "descripcion", "lat", "lon", "images"]
       }).then(corre => {
@@ -194,7 +194,7 @@ if(!precioMax){
 
     }
     obtenerUsuario(eluser).then(function (result) {
-      global.eluser=result;
+      global.eluser = result;
       res.send(JSON.stringify(global.elides));
     }).catch(function (err) {
 
@@ -215,7 +215,7 @@ if(!precioMax){
       return item.id == global.elides;
     });
 
-    res.json({ direccion: arrFound, usuario:global.eluser });
+    res.json({ direccion: arrFound, usuario: global.eluser });
 
   });
 
@@ -235,10 +235,10 @@ if(!precioMax){
   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
   // otherwise send back an error
   app.post("/api/signup", function (req, res) {
-    
+
     db.Usuario.create({
       email: req.body.email,
-     
+
     });
 
     db.User.create({
@@ -292,36 +292,36 @@ if(!precioMax){
     else {
 
       function obtenerDatosUsuario(cual) {
-      return db.Usuario.findOne({
-        where: {
-          email: cual
+        return db.Usuario.findOne({
+          where: {
+            email: cual
+          }
+        }).then(DataUser => {
+          if (!DataUser) {
+            return done(null, false, {
+              message: "ño"
+            });
+          };
+
+          return DataUser;
+
+
         }
-      }).then(DataUser => {
-        if (!DataUser) {
-          return done(null, false, {
-            message: "ño"
-          });
-        };
+        ).catch(function (err) {
 
-        return DataUser;
+          console.log(err);
 
+        });
 
       }
-      ).catch(function (err) {
+      obtenerDatosUsuario(req.user.email).then(function (resultUsuario) {
+        console.log(resultUsuario);
+        res.json(JSON.stringify(resultUsuario));
 
-        console.log(err);
+      }).catch(function (err) {
+
 
       });
-
-    }
-    obtenerDatosUsuario(req.user.email).then(function (resultUsuario) {
-      console.log(resultUsuario);
-     res.json(JSON.stringify(resultUsuario));
-    
-    }).catch(function (err) {
-
-
-    });
 
 
     }
@@ -330,7 +330,7 @@ if(!precioMax){
 
 
   app.post("/api/actualizarUsuario", function (req, res) {
-    
+
 
 
     db.Usuario.update({
@@ -339,9 +339,9 @@ if(!precioMax){
       telefono: req.body.telefono,
       website: req.body.website,
       ubicacion: req.body.ubicacion,
-      descripcion:req.body.descripcion
-      
-    },{where:{  email: req.body.email}    }
+      descripcion: req.body.descripcion
+
+    }, { where: { email: req.body.email } }
     ).then(function () {
       res.redirect(307, "http://www.google.com");
     }).catch(function (err) {
@@ -351,6 +351,28 @@ if(!precioMax){
       // res.status(422).json(err.errors[0].message);
     });
   });
+
+
+  //imagenes
+  var multer = require('multer');
+  var storage = multer.diskStorage({
+    destination: function(req, file, callback){
+        callback(null, './public/uploads'); // set the destination
+    },
+    filename: function(req, file, callback){
+    var  numeroRandom=Math.floor(Math.random() * 1000);
+        callback(null, Date.now() + numeroRandom +'.jpg'); // set the file name and extension
+    }
+});
+var upload = multer({storage: storage}).array('foto',2);
+  app.post('/api/subirfoto',  upload, function(req, res, next) {
+
+   /** rest */ 
+});
+
+
+
+
 
 
 
