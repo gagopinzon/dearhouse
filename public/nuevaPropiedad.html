@@ -2,6 +2,7 @@
 <html>
 <head>
     <title></title>
+    <link rel="stylesheet" href="css/nuevaPropiedad.css" type="text/css">
 </head>
 <body>
 
@@ -68,17 +69,19 @@
                 </article>
                 <article>
                         <div class="row">
-                        <h3>Gallery</h3>
+                        <h3>Galeria</h3>
                         </div>
                     </article>
 
                 
-                    Seleccione una foto:
-                  
+                 <div id="photos_clearing" class="clearing-thumbs" >
+                    </div> 
+                    <div class="row files" id="files1">
                     Seleccione una foto:
                     <input type="file" id="foto" name="foto" multiple />
                     <br>
-                    <button id="subirfoto">subir</button>
+                    <ul class="fileList"></ul>
+                   </div>
 
                     
                 <article class="animate move_from_bottom_short">
@@ -199,7 +202,7 @@
             <!--end Features-->
             <article class="center">
                 <div class="form-group">
-                    <button type="submit" class="btn btn-circle btn-primary btn-xl"><i class="fa fa-check"></i></button>
+                    <button type="submit" class="nuevaPropiedad btn btn-circle btn-primary btn-xl"><i class="fa fa-check"></i></button>
                 </div>
                 <!--end .form-group-->
             </article>

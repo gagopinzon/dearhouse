@@ -356,19 +356,19 @@ module.exports = function (app) {
   //imagenes
   var multer = require('multer');
   var storage = multer.diskStorage({
-    destination: function(req, file, callback){
-        callback(null, './public/uploads'); // set the destination
+    destination: function (req, file, callback) {
+      callback(null, './public/images'); // set the destination
     },
-    filename: function(req, file, callback){
-    var  numeroRandom=Math.floor(Math.random() * 1000);
-        callback(null, Date.now() + numeroRandom +'.jpg'); // set the file name and extension
+    filename: function (req, file, callback) {
+      var numeroRandom = Math.floor(Math.random() * 1000);
+      callback(null, Date.now() + numeroRandom + '.jpg'); // set the file name and extension
     }
-});
-var upload = multer({storage: storage}).array('foto',2);
-  app.post('/api/subirfoto',  upload, function(req, res, next) {
-
-   /** rest */ 
-});
+  });
+  var upload = multer({ storage: storage }).array('foto', 2);
+  app.post('/api/subirfoto', upload, function (req, res, next) {
+console.log("ja");
+    /** rest */
+  });
 
 
 

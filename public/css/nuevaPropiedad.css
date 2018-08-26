@@ -1,0 +1,24 @@
+.laGaleria {
+    width: 117px;
+}#photos_clearing, .laGaleria {
+    -moz-box-sizing:    border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing:        border-box;
+}
+
+#photos_clearing {
+    width:650px;
+
+    background:red;
+    overflow: hidden;
+    padding: 1% 0 0 1%;
+}
+
+.laGaleria {
+    height:200px;
+    width: 24%;
+    background:blue;
+    display:inline-block;
+    float: left;
+    margin: 0 1% 1% 0;
+}
