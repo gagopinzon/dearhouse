@@ -9,8 +9,10 @@
 <div id="submit-page">
     <div class="inner">
         <h1 id="temp">Registrar Nueva Propiedad</h1>
-        <form role="form" action="api/subirfoto" class="uploadImage" enctype="multipart/form-data" method="post">
-            <article class="animate move_from_bottom_short">
+      <!--  <form role="form" action="api/subirfoto" class="uploadImage" enctype="multipart/form-data" method="post"> -->
+        <form class="updatePropiedad">    
+        
+        <article class="animate move_from_bottom_short">
                 <div class="row">
                         <h3>Domicilio</h3>
                     <div class="col-md-7">
@@ -29,7 +31,7 @@
                     <div class="col-md-2">
                         <div class="form-group form-group-lg">
                             <div class="input-group">
-                                <input type="text" class="form-control" id="int" name="int" placeholder="Interior">
+                                <input type="text" class="form-control" id="interior" name="int" placeholder="Interior">
                            
                             </div><!-- /input-group -->
                         </div>
@@ -64,6 +66,9 @@
                     </div>
                     <div class="col-md-12">
                             <div id="map-simple"></div>
+                            <input  type="text" class="form-control" id="latituteUp" name="latituteUp" placeholder="latituteUp*">
+                            <input  type="text" class="form-control" id="longitudeUp" name="longitudeUp" placeholder="longitudeUp*">
+                            <input  type="text" class="form-control" id="elid" name="elid" placeholder="elid*">
                         </div>
                 </div>
                 </article>
@@ -89,8 +94,8 @@
                     <h3>Características</h3>
                     <div class="col-md-4">
                     <div class="form-group">
-                        <select name="tipo" multiple title="tipo" id="tipo">
-                            <option value="1">Venta</option>
+                        <select name="tipo" class="tipo" multiple title="tipo" id="tipo">
+                            <option select value="1">Venta</option>
                             <option value="2">Renta</option>
                            
                         </select>
@@ -98,7 +103,7 @@
 </div>
 <div class="col-md-4">
                     <div class="form-group">
-                        <select name="propiedad" id="Propiedad">
+                        <select name="propiedad" class="propiedad" id="propiedad">
                             <option value="1">Casa</option>
                             <option value="2">Departamento</option>
                             <option value="3">Terreno</option>
@@ -118,7 +123,7 @@
                     <div class="col-md-4">
                         <div class="form-group form-group-lg">
                             <div class="input-group">
-                                <input type="number" class="form-control" id="baños" name="baños" placeholder="Baños">
+                                <input type="number" class="form-control" id="banos" name="banos" placeholder="Baños">
                               
                             </div><!-- /input-group -->
                         </div>
@@ -167,13 +172,13 @@
                                 <article>
                                         
                                         <ul class="list-unstyled checkboxes">
-                                            <li><div class="checkbox"><label><input type="checkbox" name="features[]" value="1">¿Es amueblado?</label></div></li>
-                                            <li><div class="checkbox"><label><input type="checkbox" name="features[]" value="2">¿Tiene Terraza?</label></div></li>
-                                            <li><div class="checkbox"><label><input type="checkbox" name="features[]" value="3">¿Tiene Alberca?</label></div></li>
-                                            <li><div class="checkbox"><label><input type="checkbox" name="features[]" value="4">¿Tiene Aire Acondicionado?</label></div></li>
-                                            <li><div class="checkbox"><label><input type="checkbox" name="features[]" value="5">¿Tiene Cuarto de Servicio?</label></div></li>
-                                            <li><div class="checkbox"><label><input type="checkbox" name="features[]" value="6">¿Tiene Cuarto de Lavado?</label></div></li>
-                                            <li><div class="checkbox"><label><input type="checkbox" name="features[]" value="7">¿Se aceptan Mascotas?</label></div></li>
+                                            <li><div class="checkbox"><label><input type="checkbox" id="amueblado" name="features[]" value="1">¿Es amueblado?</label></div></li>
+                                            <li><div class="checkbox"><label><input type="checkbox" id="terraza" name="features[]" value="1">¿Tiene Terraza?</label></div></li>
+                                            <li><div class="checkbox"><label><input type="checkbox" id="alberca" name="features[]" value="1">¿Tiene Alberca?</label></div></li>
+                                            <li><div class="checkbox"><label><input type="checkbox" id="aire" name="features[]" value="1">¿Tiene Aire Acondicionado?</label></div></li>
+                                            <li><div class="checkbox"><label><input type="checkbox" id="servicio" name="features[]" value="1">¿Tiene Cuarto de Servicio?</label></div></li>
+                                            <li><div class="checkbox"><label><input type="checkbox" id="lavado" name="features[]" value="1">¿Tiene Cuarto de Lavado?</label></div></li>
+                                            <li><div class="checkbox"><label><input type="checkbox" id="mascotas" name="features[]" value="1">¿Se aceptan Mascotas?</label></div></li>
 
                                         </ul>
                                     </article>

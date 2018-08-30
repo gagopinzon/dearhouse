@@ -353,8 +353,8 @@ module.exports = function (app) {
   });
 
 
-  //imagenes
-  var multer = require('multer');
+  //imagenesw
+  /* var multer = require('multer');
   var storage = multer.diskStorage({
     destination: function (req, file, callback) {
       callback(null, './public/images'); // set the destination
@@ -366,12 +366,43 @@ module.exports = function (app) {
   });
   var upload = multer({ storage: storage }).array('foto', 2);
   app.post('/api/subirfoto', upload, function (req, res, next) {
-console.log("ja");
-    /** rest */
+console.log(storedFiles); 
+   
+
+
+
+
+  });*/
+
+
+  app.post('/api/subirNuevaPropiedad', function (req, res) {
+
+    db.Inmueble.create({
+      calle: req.body.calle,
+      Num: req.body.num,
+      interior: req.body.int,
+      colonia: req.body.colonia,
+      municipio: req.body.municipio,
+      estado: req.body.estado,
+      tipo: req.body.tipode,
+      propiedad: req.body.propiedad,
+      habitaciones: req.body.habitaciones,
+      baños: req.body.banos,
+      plantas: req.body.plantas,
+      precio: req.body.precio,
+      estacionamiento: req.body.estacionamiento,
+      metros: req.body.metros,
+      amueblado: req.body.amueblado,
+      terraza: req.body.terraza,
+      alberca: req.body.alberca,
+      aire: req.body.aire,
+      servicio:  req.body.servicio,
+      lavado: req.body.lavado,
+      mascotas: req.body.mascotas,
+      lat: req.body.latitude,
+      lon: req.body.longitude
+    });
   });
-
-
-
 
 
 

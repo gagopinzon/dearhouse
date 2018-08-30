@@ -432,6 +432,13 @@ function simpleMap(_latitude, _longitude, draggableMarker, scrollwheel, external
                 map.setCenter(results[0].geometry.location);
                 map.setZoom(16);
 
+                var lata = $('#latituteUp');
+                lata.val(results[0].geometry.location.lat());    
+
+                var longo = $('#longitudeUp');
+                longo.val(results[0].geometry.location.lng());    
+
+                
 
 
                 if (marker) {

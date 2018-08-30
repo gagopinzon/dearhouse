@@ -57,7 +57,7 @@ var user=JSON.parse(elUsuario);
       return;
     }
 
-    hacerCambios(dUsuario.nombre, dUsuario.apellido, dUsuario.email, dUsuario.telefono, dUsuario.website, dUsuario.ubicacion, dUsuario.descripcion);
+   hacerCambios(dUsuario.nombre, dUsuario.apellido, dUsuario.email, dUsuario.telefono, dUsuario.website, dUsuario.ubicacion, dUsuario.descripcion);
 
     function hacerCambios(nombre, apellido, email, telefono, website, ubicacion, descripcion){
       {
@@ -80,7 +80,7 @@ var user=JSON.parse(elUsuario);
         $("#alert .msg").text(err.responseJSON);
         $("#alert").fadeIn(500);
       }
-    }
+    } 
 console.log(dUsuario);
 
 
